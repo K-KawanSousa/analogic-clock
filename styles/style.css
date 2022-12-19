@@ -1,0 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #082032;
+}
+
+.clock{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 50vw;
+    background-image: url(/images/clock.png);
+    background-size: cover;
+    border-radius: 50%;
+    border: 3px solid #082032;
+
+    box-shadow: 0 -2.5vw 2.5vw rgba(255,255,255,0.05), inset 0 -2.5vw 2.5vw rgba(255,255,255,0.05), 0 2.5vw 2.5vw rgba(0,0,0,0.4), inset 0 2.5vw 2.5vw rgba(0,0,0,0.4);
+}
+
+.clock::before{
+    position: absolute;
+    z-index: 100;
+    content: '';
+    padding: 1vw;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+
+.clock .hour, .clock .min, .clock .sec{
+    position: absolute;
+}
+
+.clock .hour .hr{
+    height: 9.5vw;
+    width: .6vw;
+    background-color: red;
+    border-radius: 1vw;
+    transform-origin: bottom center;
+    transform: translateY(-50%);
+    z-index: 70;
+}
+
+.clock .min .mn{
+    height: 12.5vw;
+    width: .25vw;
+    background-color: #ffffff;
+    border-radius: 1vw;
+    transform-origin: bottom center;
+    transform: translateY(-50%);
+    z-index: 80;
+}
+
+.clock .sec .ss{
+    height: 21vw;
+    width: .1vw;
+    background-color: #ffffff;
+    border-radius: 1vw;
+    transform-origin: center 80% ;
+    transform: translateY(-30%);
+    z-index: 90;
+}
