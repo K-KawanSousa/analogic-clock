@@ -5,7 +5,7 @@ const
     multiplier = 6, // value resulting from dividing 360 (total number of degrees) by 60 (maximum minutes and seconds)
     secondSound = new Audio('/audio/second-audio.mp3')
 
-    updateHr()
+    updateHr()// to have no delay when the page is loaded
     setInterval(()=>{
         updateHr()
         secondSound.play();
@@ -18,7 +18,7 @@ function updateHr(){
         mn = date.getMinutes() * multiplier,
         sc = date.getSeconds() * multiplier;
 
-    hrPointer.style.transform = `rotateZ(${hr + (mn / 12)}deg)`;
+    hrPointer.style.transform = `rotateZ(${hr + (mn / 12)}deg)`;//added minutes for the hand to change its rotation every minute, not just every hour
     minPointer.style.transform = `rotateZ(${mn}deg)`;
     secPointer.style.transform = `rotateZ(${sc}deg)`;
 }
