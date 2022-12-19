@@ -11,6 +11,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #082032;
+    position: relative;
 }
 
 .clock{
@@ -20,53 +21,154 @@ body{
     align-items: center;
     width: 50vw;
     height: 50vw;
-    background-image: url(/images/clock.png);
-    background-size: cover;
+    border: 1vw solid #082032;
     border-radius: 50%;
-    border: 3px solid #082032;
-
-    box-shadow: 0 -2.5vw 2.5vw rgba(255,255,255,0.05), inset 0 -2.5vw 2.5vw rgba(255,255,255,0.05), 0 2.5vw 2.5vw rgba(0,0,0,0.4), inset 0 2.5vw 2.5vw rgba(0,0,0,0.4);
+    box-shadow: 0 -3vw 3vw #ffffff0d, inset 0 -3vw 3vw #ffffff0d, 0 3vw 3vw #00000045, inset 0 3vw 3vw #00000045;
 }
 
-.clock::before{
+.clock .nbr{
     position: absolute;
-    z-index: 100;
+    display: block;
+    font-size: 5vw;
+    font-weight: bold;
+    color: #1d6ba8;
+    filter: drop-shadow(0 -.15vw .15vw #ffffff21) drop-shadow(0 .15vw .15vw #000000bf);
+    z-index: 90;
+}
+
+.clock .nbr#top{
+    top: 3vw;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.clock .nbr#right{
+    top: 50%;
+    right: 3vw;
+    transform: translateY(-50%);
+}
+
+.clock .nbr#bottom{
+    bottom: 3vw;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.clock .nbr#left{
+    top: 50%;
+    left: 3vw;
+    transform: translateY(-50%);
+}
+
+/* dasheds */
+.dashs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44vw;
+    height: 44vw;
+    border-radius: 50%;
+    z-index: 80;
+    filter: drop-shadow(0 -.1vw .1vw #ffffff0f) drop-shadow(0 -.2vw .1vw #ffffff0f) drop-shadow(0 .2vw .1vw #0000007e) drop-shadow(0 .3vw .1vw #0000007e);
+}
+
+.dashs .dsh{
+    transform: translate(50%, calc(-22vw + 100%));
+    transform-origin: 50% 21vw;
+    position: absolute;
+    background-color: #082032;
+    width: .5vw;
+    height: 2.5vw;
+}
+
+.dashs .dsh#dsh-1{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(30deg);
+}
+
+.dashs .dsh#dsh-2{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(60deg);
+}
+
+.dashs .dsh#dsh-3{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(120deg);
+}
+
+.dashs .dsh#dsh-4{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(150deg);
+}
+
+.dashs .dsh#dsh-5{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(210deg);
+}
+
+.dashs .dsh#dsh-6{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(240deg);
+}
+
+.dashs .dsh#dsh-7{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(300deg);
+}
+
+.dashs .dsh#dsh-8{
+    transform: translate(50%, calc(-22vw + 100%)) rotate(330deg);
+}
+
+
+/* pointers */
+
+.pointer-cont{
+    position: absolute;
+    filter: drop-shadow(0 -.1vw .1vw #ffffff0f) drop-shadow(0 -.2vw .1vw #ffffff0f) drop-shadow(0 .2vw .1vw #0000007e) drop-shadow(0 .3vw .1vw #0000007e);
+}
+.pointer-cont::after{
     content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
     padding: 1vw;
     border-radius: 50%;
-    background-color: #ffffff;
+    background-color: #082032;
+    z-index: 100;
 }
 
-.clock .hour, .clock .min, .clock .sec{
+.pointer{
     position: absolute;
 }
 
-.clock .hour .hr{
-    height: 9.5vw;
-    width: .6vw;
-    background-color: red;
-    border-radius: 1vw;
-    transform-origin: bottom center;
-    transform: translateY(-50%);
-    z-index: 70;
-}
-
-.clock .min .mn{
-    height: 12.5vw;
-    width: .25vw;
-    background-color: #ffffff;
-    border-radius: 1vw;
-    transform-origin: bottom center;
-    transform: translateY(-50%);
-    z-index: 80;
-}
-
-.clock .sec .ss{
-    height: 21vw;
-    width: .1vw;
-    background-color: #ffffff;
-    border-radius: 1vw;
-    transform-origin: center 80% ;
-    transform: translateY(-30%);
+.pointer#hour{
     z-index: 90;
+    position: absolute;
+    top: -8vw;
+    left: calc(-.7vw / 2);
+    display: block;
+    width: .7vw;
+    height: 8vw;
+    transform-origin: 50% 100%;
+    background-color: #1d6ca8cb;
+    border-radius: 1vw;
+}
+.pointer#min{
+    z-index: 80;
+    position: absolute;
+    top: -11vw;
+    left: calc(-.45vw / 2);
+    display: block;
+    width: .45vw;
+    height: 11vw;
+    transform-origin: 50% 100%;
+    background-color: #ffffff70;
+    border-radius: 1vw;
+}
+
+.pointer#sec{
+    z-index: 70;
+    position: absolute;
+    top: -17vw;
+    left: calc(-.2vw / 2);
+    display: block;
+    width: .2vw;
+    height: 22vw;
+    transform-origin: 50% 17vw;
+    background-color: #00ffff9b;
+    border-radius: 1vw;
+    transform: rotate(90deg);
 }
